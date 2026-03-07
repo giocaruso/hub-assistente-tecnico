@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulatore Quiz AT - Oltre il Profilo</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+        .quiz-container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); max-width: 700px; width: 100%; }
+        .question { font-size: 1.3rem; margin-bottom: 25px; color: #1c1e21; font-weight: 600; }
+        .options { display: grid; gap: 12px; }
+        button.opt { padding: 15px; border: 2px solid #e4e6eb; border-radius: 8px; cursor: pointer; text-align: left; background: white; font-size: 1rem; transition: all 0.2s; }
+        button.opt:hover:not([disabled]) { border-color: #007bff; background-color: #f0f7ff; }
+        .correct { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724; }
+        .wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24; }
+        #feedback { margin-top: 25px; padding: 20px; border-radius: 8px; display: none; background-color: #e9ecef; border-left: 5px solid #007bff; }
+        #next-btn { margin-top: 20px; padding: 12px 30px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; display: none; }
+        .progress { margin-bottom: 20px; color: #65676b; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="progress" id="progress">Domanda 0 di 0</div>
+        <div id="quiz-box">
+            <div class="question" id="q-text">Inizializzazione Fortezza...</div>
+            <div class="options" id="q-options"></div>
+            <div id="feedback"></div>
+            <center><button id="next-btn" onclick="loadNext()">Prossima Domanda</button></center>
+        </div>
+    </div>
+
+    <script>
+        let allQuestions = [];
+        let currentIdx = 0;
+
+        // Funzione per rimescolare l'array (Fisher-Yates)
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Caricamento dati dal Caveau JSON
+        fetch('domande.json')
+            .then(res => res.json())
+            .then(data => {
+                allQuestions = shuffle(data); // Rimescola le domande all'avvio
+                showQuestion();
+            });
+
+        function showQuestion() {
+            const q = allQuestions[currentIdx];
+            document.getElementById('progress').innerText = `Domanda ${currentIdx + 1} di ${allQuestions.length}`;
+            document.getElementById('q-text').innerText = q.domanda;
+            document.getElementById('feedback').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'none';
+            
+            const container = document.getElementById('q-options');
+            container.innerHTML = '';
+            
+            q.opzioni.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'opt';
+                btn.innerText = opt;
+                btn.onclick = () => check(btn, i, q.corretta, q.spiegazione);
+                container.appendChild(btn);
+            });
+        }
+
+        function check(btn, selected, correct, info) {
+            const btns = document.querySelectorAll('.opt');
+            btns.forEach(b => b.disabled = true);
+            
+            if(selected === correct) {
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('wrong');
+                btns[correct].classList.add('correct');
+            }
+            
+            const f = document.getElementById('feedback');
+            f.innerHTML = `<strong>Spiegazione:</strong> ${info}`;
+            f.style.display = 'block';
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function loadNext() {
+            currentIdx++;
+            if(currentIdx < allQuestions.length) {
+                showQuestion();
+            } else {
+                document.getElementById('quiz-box').innerHTML = "<h2>Allenamento Completato!</h2><p>La tua preparazione è ora più solida.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
