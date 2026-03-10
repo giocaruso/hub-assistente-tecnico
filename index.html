@@ -76,7 +76,6 @@
         .manuali-section { margin-top: 60px; text-align: center; padding-bottom: 50px; }
         .manuali-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 30px; }
         
-        /* CARD MANUALI AGGIORNATE (Senza bottone, interamente cliccabili) */
         .manual-card { 
             background: #ebf2f9; 
             padding: 25px; 
@@ -84,7 +83,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
             display: flex; flex-direction: column; align-items: center;
             border: 1px solid rgba(0, 74, 153, 0.1);
-            cursor: pointer; /* Fa capire che si può cliccare */
+            cursor: pointer; 
             transition: all 0.3s ease;
         }
         .manual-card:hover {
@@ -111,7 +110,7 @@
     <header class="hero">
         <div class="hero-container">
             <a href="chi-sono.html" title="Scopri chi sono">
-                <img src="assistente-tecnico.png" alt="Avatar Tecnico Esperto" class="hero-img">
+                <img src="img/assistente-tecnico.png" alt="Avatar Tecnico Esperto" class="hero-img">
             </a>
             <div style="flex:1;">
                 <h1>Hub Assistente Tecnico</h1>
@@ -146,17 +145,17 @@
 
                 <div class="manuali-grid">
                     <div class="manual-card" onclick="window.open('https://amzn.eu/d/0iFVNuCY', '_blank')" title="Scoprilo su Amazon">
-                        <img src="copertina-200quiz.jpg" class="manual-img" alt="Quiz 200">
+                        <img src="img/copertina-200quiz.jpg" class="manual-img" alt="Quiz 200">
                         <h4>Quiz dell' AT</h4>
                         <p class="manual-subtitle">Per misurare il livello di competenza professionale.</p>
                     </div>
                     <div class="manual-card" onclick="window.open('https://amzn.eu/d/005dvtg0', '_blank')" title="Scoprilo su Amazon">
-                        <img src="copertina-oltre-profilo.jpg" class="manual-img" alt="Area Informatica">
+                        <img src="img/copertina-oltre-profilo.jpg" class="manual-img" alt="Area Informatica">
                         <h4>Diario di un AT</h4>
                         <p class="manual-subtitle">Diario di bordo quotidiano di un assistente al lavoro.</p>
                     </div>
                     <div class="manual-card" onclick="window.open('https://amzn.eu/d/03SaaHGU', '_blank')" title="Scoprilo su Amazon">
-                        <img src="copertina-tutti-possono.jpg" class="manual-img" alt="Posizioni Economiche">
+                        <img src="img/copertina-tutti-possono.jpg" class="manual-img" alt="Posizioni Economiche">
                         <h4>Tutti possono fare l'AT</h4>
                         <p class="manual-subtitle">Per tutti coloro che vogliono iscriversi nelle graduatorie come tecnico di laboratorio informatico e hanno timore di non esserne all'altezza.</p>
                     </div>
