@@ -99,7 +99,29 @@
         .section { display: none; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .btn { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
         .btn:hover { background: var(--secondary); }
-        .btn-opzione:hover { background-color: var(--bg) !important; border-color: var(--primary) !important; }
+        
+        /* Stile per i bottoni delle opzioni del quiz */
+        .btn-opzione:hover:not(:disabled) { background-color: var(--bg) !important; border-color: var(--primary) !important; }
+        .btn-opzione:disabled { cursor: default; }
+
+        /* Nuovo bottone "Torna all'Hub" stilizzato */
+        .btn-back-hub {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 25px;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .btn-back-hub:hover {
+            background: var(--primary);
+            color: white;
+        }
 
         /* Layout intro quiz */
         .quiz-intro-wrapper { display: flex; flex-direction: column; align-items: center; gap: 30px; margin-bottom: 30px; text-align: center; }
@@ -179,10 +201,10 @@
         </div>
 
         <div id="quiz-auth" class="section">
-            <button onclick="location.reload()" style="cursor:pointer; background:none; border:none; color:var(--primary); font-weight:bold; margin-bottom: 20px;">← Torna all'Hub</button>
+            <button onclick="location.reload()" class="btn-back-hub">← Torna all'Hub</button>
             
             <div style="max-width: 800px; margin: 0 auto;">
-                <h2 style="color: var(--secondary); text-align: center; margin-bottom: 30px; font-size: 2rem;">Quiz dell'Assistente Tecnico: Preparazione e Competenze</h2>
+                <h2 style="color: var(--secondary); text-align: center; margin-bottom: 30px; font-size: 2rem;">Quiz dell'AT: Preparazione e Competenze</h2>
                 
                 <div class="quiz-intro-wrapper">
                     <a href="https://amzn.eu/d/0iFVNuCY" target="_blank" class="quiz-cover-link" title="Acquista o visualizza su Amazon">
@@ -191,18 +213,30 @@
                     
                     <div>
                         <p style="font-size: 1.05rem; margin-top: 0; line-height: 1.6;">
-                            Vuoi misurare il tuo livello di competenza professionale o prepararti in vista delle posizioni economiche ATA? Questo manuale va dritto al sodo attraverso un metodo di apprendimento attivo, pensato da un tecnico per i tecnici.
+                            Questo simulatore contiene le 200 domande interattive tratte dal mio libro pubblicato su Amazon:
+                            <a href="https://amzn.eu/d/0iFVNuCY" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: underline;"><em>"Quiz dell'Assistente Tecnico delle scuole"</em></a>.
                         </p>
-                        
-                        <ul style="line-height: 1.6; margin-bottom: 20px; padding-left: 20px;">
-                            <li style="margin-bottom: 8px;"><strong>200 Quiz Mirati:</strong> Coprono tutti gli argomenti fondamentali (normativa, sicurezza, gestione documentale, informatica e IA).</li>
-                            <li style="margin-bottom: 8px;"><strong>Soluzioni Commentate:</strong> Ogni risposta ha una spiegazione sintetica per trasformare l'errore in un'occasione di ripasso.</li>
-                            <li><strong>Sistema Anti-Memoria:</strong> L'algoritmo rimescola casualmente l'ordine delle domande a ogni avvio.</li>
-                        </ul>
+
+                        <div style="margin-top: 20px; text-align: left;">
+                            <p style="margin-top: 0; font-weight: bold; color: var(--secondary);">A chi è rivolto:</p>
+                            <ul style="line-height: 1.6; padding-left: 20px; margin-top: 5px;">
+                                <li style="margin-bottom: 8px;"><strong>Assistenti Tecnici in servizio e personale ATA:</strong> per consolidare le competenze quotidiane o prepararsi ai passaggi per le posizioni economiche.</li>
+                                <li><strong>Aspiranti Tecnici:</strong> per chi desidera inserirsi nelle graduatorie e vuole scoprire esattamente quali argomenti e casistiche pratiche bisogna conoscere per affrontare questo mestiere con sicurezza.</li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-top: 20px; text-align: left;">
+                            <p style="margin-top: 0; font-weight: bold; color: var(--secondary);">Argomenti trattati (200 Quiz):</p>
+                            <ul style="line-height: 1.6; padding-left: 20px; margin-top: 5px;">
+                                <li style="margin-bottom: 8px;"><strong>DigComp 2.2:</strong> le competenze digitali fondamentali (Syllabus) richieste oggi nella Pubblica Amministrazione.</li>
+                                <li style="margin-bottom: 8px;"><strong>Normativa e Sicurezza:</strong> legislazione scolastica, privacy (GDPR) e sicurezza sul lavoro nei laboratori (D.Lgs. 81/08).</li>
+                                <li><strong>Informatica, Hardware e Innovazione:</strong> reti, software, gestione documentale, fino alle nuove sfide dell'Intelligenza Artificiale (IA) a scuola.</li>
+                            </ul>
+                        </div>
                         
                         <div style="background: var(--bg); padding: 20px; border-radius: 12px; border: 1px dashed var(--primary); margin-top: 25px;">
                             <p style="margin-top: 0; font-weight: bold; color: var(--secondary);">Come accedere:</p>
-                            <p style="margin-bottom: 0;">Prendi o apri una copia del manuale, vai alla sezione delle soluzioni, cerca la spiegazione relativa alla <strong>domanda n. 187</strong> e inserisci qui sotto la <strong>prima parola</strong> esatta di quel testo.</p>
+                            <p style="margin-bottom: 0;">Apri una copia del manuale, vai alla sezione delle soluzioni, cerca la spiegazione relativa alla <strong>domanda n. 187</strong> e inserisci qui sotto la <strong>prima parola</strong> esatta di quel testo.</p>
                         </div>
                     </div>
                 </div>
@@ -219,7 +253,7 @@
         </div>
 
         <div id="newsletter-section" class="section" style="text-align: center;">
-            <button onclick="location.reload()" style="cursor:pointer; background:none; border:none; color:var(--primary); font-weight:bold; margin-bottom: 20px;">← Torna all'Hub</button>
+            <button onclick="location.reload()" class="btn-back-hub">← Torna all'Hub</button>
             <h2 style="color: var(--secondary);">Resta Aggiornato</h2>
             <p>Sezione in costruzione...</p>
         </div>
@@ -277,16 +311,13 @@
             showSection('quiz-setup');
 
             try {
-                // Va a cercare il tuo file domande.json
                 const response = await fetch('domande.json');
                 if (!response.ok) throw new Error("File domande.json non trovato.");
                 
                 let data = await response.json();
                 
-                // Rimescola l'ordine delle domande
                 domandeQuiz = mescolaArray(data);
                 
-                // Rimescola le opzioni all'interno di ogni domanda
                 domandeQuiz.forEach(q => {
                     let opzioniConIndice = q.opzioni.map((testo, index) => ({ testo, isCorretta: index === q.corretta }));
                     opzioniConIndice = mescolaArray(opzioniConIndice);
@@ -295,12 +326,11 @@
                     q.indiceCorrettoMescolato = opzioniConIndice.findIndex(opt => opt.isCorretta);
                 });
 
-                // Avvia la prima domanda
                 mostraDomanda();
 
             } catch (error) {
                 document.getElementById('quiz-setup').innerHTML = `
-                    <button onclick="location.reload()" style="cursor:pointer; background:none; border:none; color:var(--primary); font-weight:bold; margin-bottom: 20px;">← Torna all'Hub</button>
+                    <button onclick="location.reload()" class="btn-back-hub">← Torna all'Hub</button>
                     <h2 style="color: #ff6b6b; text-align: center;">Errore di caricamento</h2>
                     <p style="text-align: center;">Non riesco a trovare il file <strong>domande.json</strong>. Assicurati di averlo caricato nella stessa cartella di index.html su GitHub!</p>
                 `;
@@ -313,7 +343,7 @@
             
             let html = `
                 <div style="max-width: 800px; margin: 0 auto; text-align: left;">
-                    <button onclick="location.reload()" style="cursor:pointer; background:none; border:none; color:var(--primary); font-weight:bold; margin-bottom: 20px;">← Esci dal Quiz</button>
+                    <button onclick="location.reload()" class="btn-back-hub">← Esci dal Quiz</button>
                     
                     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg); padding-bottom: 10px; margin-bottom: 20px;">
                         <span style="font-weight: bold; color: var(--secondary);">Domanda ${domandaCorrente + 1} di ${domandeQuiz.length}</span>
@@ -327,8 +357,8 @@
 
             q.opzioniMescolate.forEach((opzione, index) => {
                 html += `
-                    <button class="btn-opzione" onclick="verificaRisposta(${index})" 
-                            style="background: white; border: 2px solid var(--bg); padding: 15px; border-radius: 8px; text-align: left; cursor: pointer; font-size: 1.05rem; transition: 0.2s;">
+                    <button id="btn-opt-${index}" class="btn-opzione" onclick="verificaRisposta(${index})" 
+                            style="background: white; border: 2px solid var(--bg); padding: 15px; border-radius: 8px; text-align: left; font-size: 1.05rem; transition: 0.2s;">
                         ${opzione}
                     </button>
                 `;
@@ -336,6 +366,7 @@
 
             html += `
                     </div>
+                    <div id="feedback-container" style="display:none; margin-top: 25px; padding: 20px; border-radius: 8px;"></div>
                 </div>
             `;
             
@@ -346,7 +377,6 @@
             const q = domandeQuiz[domandaCorrente];
             const isCorretta = (indiceSelezionato === q.indiceCorrettoMescolato);
             
-            // Salva la risposta per il riepilogo
             risposteUtente.push({
                 domanda: q.domanda,
                 corretta: isCorretta,
@@ -357,7 +387,42 @@
                 punteggio++;
             }
 
-            // Passa alla prossima domanda o mostra il risultato
+            // Disabilita tutti i bottoni per evitare doppi clic
+            for(let i=0; i<q.opzioniMescolate.length; i++) {
+                const btn = document.getElementById(`btn-opt-${i}`);
+                btn.disabled = true;
+                
+                // Colora la risposta corretta di verde
+                if(i === q.indiceCorrettoMescolato) {
+                    btn.style.borderColor = "#4caf50";
+                    btn.style.backgroundColor = "#e8f5e9";
+                    btn.style.color = "#2e7d32";
+                    btn.style.fontWeight = "bold";
+                } 
+                // Colora la risposta sbagliata di rosso
+                else if(i === indiceSelezionato && !isCorretta) {
+                    btn.style.borderColor = "#f44336";
+                    btn.style.backgroundColor = "#ffebee";
+                    btn.style.color = "#c62828";
+                }
+            }
+
+            // Mostra il riquadro con la spiegazione
+            const feedbackDiv = document.getElementById('feedback-container');
+            feedbackDiv.style.display = "block";
+            feedbackDiv.style.backgroundColor = isCorretta ? "#e8f5e9" : "#ffebee";
+            feedbackDiv.style.border = `1px solid ${isCorretta ? "#4caf50" : "#f44336"}`;
+            
+            feedbackDiv.innerHTML = `
+                <h4 style="margin-top:0; color: ${isCorretta ? '#2e7d32' : '#c62828'};">
+                    ${isCorretta ? '✅ Risposta Esatta!' : '❌ Risposta Sbagliata!'}
+                </h4>
+                <p style="margin-bottom: 20px;"><strong>Spiegazione:</strong> ${q.spiegazione}</p>
+                <button class="btn" onclick="prossimaDomanda()" style="width: auto; padding: 10px 25px;">Avanti ➔</button>
+            `;
+        }
+
+        function prossimaDomanda() {
             domandaCorrente++;
             if (domandaCorrente < domandeQuiz.length) {
                 mostraDomanda();
@@ -384,13 +449,12 @@
                     <button class="btn" onclick="location.reload()" style="max-width: 300px; margin-bottom: 40px;">Torna all'Hub</button>
             `;
 
-            // Genera il riepilogo degli errori con le spiegazioni
             const errori = risposteUtente.filter(r => !r.corretta);
             
             if(errori.length > 0) {
                 html += `
                     <div style="text-align: left; background: var(--bg); padding: 30px; border-radius: 12px;">
-                        <h3 style="color: var(--secondary); margin-top: 0; border-bottom: 2px solid white; padding-bottom: 10px;">Riepilogo Errori e Spiegazioni</h3>
+                        <h3 style="color: var(--secondary); margin-top: 0; border-bottom: 2px solid white; padding-bottom: 10px;">Riepilogo Errori</h3>
                 `;
                 errori.forEach((err, i) => {
                     html += `
