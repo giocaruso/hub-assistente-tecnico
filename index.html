@@ -64,10 +64,11 @@
         .red-mark { color: #ff6b6b; font-weight: bold; padding-bottom: 2px; }
         .bold-tech { font-weight: 800; color: #fff; font-style: italic; }
 
-        .container { flex-grow: 1; max-width: 1000px; margin: -40px auto 40px; padding: 0 20px; }
+        .container { flex-grow: 1; max-width: 1000px; margin: 40px auto; padding: 0 20px; }
         
-        /* Modificata per le nuove sezioni */
         .category-section { margin-top: 50px; }
+        .category-section:first-child { margin-top: 0; } 
+        
         .category-section h2 { color: var(--secondary); margin-bottom: 5px; text-align: center; font-size: 2rem;}
         .category-section p.subtitle { color: var(--primary); font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 30px; }
 
@@ -104,9 +105,10 @@
         .manual-card h4 { margin: 10px 0 5px 0; font-size: 1.1rem; color: var(--secondary); font-weight: 700; }
         .manual-subtitle { font-size: 0.85rem; color: #555; margin-bottom: 0; text-align: center; }
 
-        .section { display: none; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: 40px; }
+        .section { display: none; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: 20px; }
         .btn { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
-        .btn:hover { background: var(--secondary); }
+        .btn:hover:not(:disabled) { background: var(--secondary); }
+        .btn:disabled { opacity: 0.7; cursor: not-allowed; }
         
         .btn-opzione:hover:not(:disabled) { background-color: var(--bg) !important; border-color: var(--primary) !important; }
         .btn-opzione:disabled { cursor: default; }
@@ -162,7 +164,7 @@
         
         <div id="home-hub">
             
-            <div class="category-section" style="margin-top: 0;">
+            <div class="category-section">
                 <h2>Strumenti Operativi</h2>
                 <p class="subtitle">Test, utilità e aggiornamenti per il lavoro quotidiano.</p>
                 <div class="grid">
@@ -172,7 +174,7 @@
                         <p>Mettiti alla prova: test rapido da 50 domande e simulatore avanzato sui 200 quiz del manuale.</p>
                     </div>
                     
-                    <div class="card" onclick="showSection('coming-soon')">
+                    <div class="card" onclick="showSection('newsletter-section')">
                         <span style="font-size:2.5rem;">🔔</span>
                         <h3>Resta Aggiornato</h3>
                         <p>News, concorsi, normative e aggiornamenti sul profilo ATA.</p>
@@ -323,6 +325,25 @@
         <div id="quiz-setup" class="section">
         </div>
 
+        <div id="newsletter-section" class="section" style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <button onclick="location.reload()" class="btn-back-hub" style="float: left;">← Torna all'Hub</button>
+            <div style="clear: both;"></div>
+            
+            <span style="font-size: 4rem;">📩</span>
+            <h2 style="color: var(--secondary);">Iscriviti alla Newsletter</h2>
+            <p style="font-size: 1.05rem; margin-bottom: 30px;">Ricevi aggiornamenti sulle ultime normative, concorsi e nuovi strumenti pensati per gli Assistenti Tecnici.</p>
+            
+            <form id="newsletter-form" onsubmit="submitToGoogle(event)">
+                <input type="text" id="work-address" name="work-address" style="display:none;" tabindex="-1" autocomplete="off">
+                
+                <input type="email" id="email-input" placeholder="Inserisci la tua email..." required style="padding:15px; border-radius:8px; border:1px solid #ccc; width:100%; max-width:300px; margin-bottom: 15px; font-size: 1rem;">
+                <br>
+                <button type="submit" class="btn" id="submit-btn" style="max-width:300px; font-size: 1.1rem;">Iscriviti Ora</button>
+            </form>
+
+            <div id="newsletter-msg" style="margin-top: 20px; font-weight: bold; display: none; padding: 15px; border-radius: 8px;"></div>
+        </div>
+
         <div id="coming-soon" class="section" style="text-align: center; max-width: 600px; margin-left: auto; margin-right: auto;">
             <button onclick="location.reload()" class="btn-back-hub" style="float: left;">← Torna all'Hub</button>
             <div style="clear: both;"></div>
@@ -354,18 +375,13 @@
         let risposteUtente = []; 
 
         function showSection(id) {
-            // Nascondiamo l'Hub principale e la copertina
             document.getElementById('home-hub').style.display = 'none';
             document.querySelector('.hero').style.display = 'none';
             
-            // Nascondiamo tutte le altre sezioni aperte
             const sections = document.querySelectorAll('.section');
             sections.forEach(sec => sec.style.display = 'none');
             
-            // Mostriamo solo la sezione desiderata
             document.getElementById(id).style.display = 'block';
-            
-            // Trucco UX: Riporta la visuale automaticamente in cima alla pagina
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
@@ -377,6 +393,51 @@
                 alert("Parola non corretta. Verifica sul manuale!");
             }
         }
+
+        // --- FUNZIONE INVIO NEWSLETTER (GOOGLE SCRIPT + HONEYPOT) ---
+        function submitToGoogle(e) {
+            e.preventDefault();
+            
+            // Controllo Anti-Bot (Honeypot)
+            const honeyPot = document.getElementById('work-address').value;
+            if (honeyPot !== "") {
+                // È un bot, interrompiamo l'esecuzione senza dire nulla.
+                console.warn("Tentativo bot bloccato");
+                return; 
+            }
+
+            const email = document.getElementById('email-input').value;
+            const btn = document.getElementById('submit-btn');
+            const msg = document.getElementById('newsletter-msg');
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxyQUkxrfwyVsu2ws8ACqkRgJUhc_KQ5KoVDNys_sj0NUCOjEPGQ_GGOvm0uIACcAxZNw/exec";
+            
+            btn.disabled = true;
+            btn.innerText = "Iscrizione in corso...";
+            msg.style.display = "none";
+            
+            fetch(scriptURL + "?email=" + encodeURIComponent(email), {
+                method: 'GET',
+                mode: 'no-cors'
+            }).then(() => {
+                msg.style.display = "block";
+                msg.style.backgroundColor = "#e8f5e9";
+                msg.style.color = "#2e7d32";
+                msg.style.border = "1px solid #4caf50";
+                msg.innerText = "Iscrizione completata con successo! 🎉";
+                document.getElementById('email-input').value = "";
+                btn.disabled = false;
+                btn.innerText = "Iscriviti Ora";
+            }).catch(error => {
+                msg.style.display = "block";
+                msg.style.backgroundColor = "#ffebee";
+                msg.style.color = "#c62828";
+                msg.style.border = "1px solid #f44336";
+                msg.innerText = "Errore durante l'iscrizione. Riprova più tardi.";
+                btn.disabled = false;
+                btn.innerText = "Iscriviti Ora";
+            });
+        }
+        // --------------------------------------------------------
 
         function mescolaArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -453,7 +514,7 @@
             `;
             
             quizContainer.innerHTML = html;
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Riporta in alto ad ogni nuova domanda
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }
 
         function verificaRisposta(indiceSelezionato) {
@@ -470,19 +531,16 @@
                 punteggio++;
             }
 
-            // Disabilita tutti i bottoni per evitare doppi clic
             for(let i=0; i<q.opzioniMescolate.length; i++) {
                 const btn = document.getElementById(`btn-opt-${i}`);
                 btn.disabled = true;
                 
-                // Colora la risposta corretta di verde
                 if(i === q.indiceCorrettoMescolato) {
                     btn.style.borderColor = "#4caf50";
                     btn.style.backgroundColor = "#e8f5e9";
                     btn.style.color = "#2e7d32";
                     btn.style.fontWeight = "bold";
                 } 
-                // Colora la risposta sbagliata di rosso
                 else if(i === indiceSelezionato && !isCorretta) {
                     btn.style.borderColor = "#f44336";
                     btn.style.backgroundColor = "#ffebee";
@@ -490,7 +548,6 @@
                 }
             }
 
-            // Mostra il riquadro con la spiegazione
             const feedbackDiv = document.getElementById('feedback-container');
             feedbackDiv.style.display = "block";
             feedbackDiv.style.backgroundColor = isCorretta ? "#e8f5e9" : "#ffebee";
@@ -504,7 +561,6 @@
                 <button class="btn" onclick="prossimaDomanda()" style="width: auto; padding: 10px 25px;">Avanti ➔</button>
             `;
             
-            // Fai scorrere leggermente la pagina in basso per far leggere la spiegazione
             feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
@@ -556,7 +612,7 @@
             html += `<button onclick="location.reload()" class="btn-back-hub" style="margin-bottom: 40px;">← Torna all'Hub</button></div>`;
             
             quizContainer.innerHTML = html;
-            window.scrollTo({ top: 0, behavior: 'smooth' }); // Riporta in alto
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }
     </script>
 </body>
