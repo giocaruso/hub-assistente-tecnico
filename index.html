@@ -63,6 +63,37 @@
 
         .red-mark { color: #ff6b6b; font-weight: bold; padding-bottom: 2px; }
         .bold-tech { font-weight: 800; color: #fff; font-style: italic; }
+		
+        /* --- TERMINALE AGGIORNAMENTI (DINAMICO MA PULITO) --- */
+        .live-update-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.2); 
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 0.95rem;
+            color: #ffffff;
+            margin-top: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #4ce0b3;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(76, 224, 179, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(76, 224, 179, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(76, 224, 179, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(76, 224, 179, 0); }
+        }
 
         .container { flex-grow: 1; max-width: 1000px; margin: 40px auto; padding: 0 20px; }
         
@@ -157,6 +188,10 @@
                 <h1>Hub Assistente Tecnico ATA</h1>
                 <p>Supporto digitale e risorse interattive per l'AT di laboratorio. <br> <span class="bold-tech">Realizzato da un Assistente tecnico di Informatica</span>.</p>
             </div>
+        </div>
+       <div class="live-update-badge" title="Sistema in continuo aggiornamento">
+            <span class="pulse-dot"></span>
+            <span>Aggiornamento 03/2026: Inserito Quiz Antincendio</span>
         </div>
     </header>
 
