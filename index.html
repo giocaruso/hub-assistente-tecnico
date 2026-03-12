@@ -401,7 +401,6 @@
             // Controllo Anti-Bot (Honeypot)
             const honeyPot = document.getElementById('work-address').value;
             if (honeyPot !== "") {
-                // È un bot, interrompiamo l'esecuzione senza dire nulla.
                 console.warn("Tentativo bot bloccato");
                 return; 
             }
@@ -415,9 +414,14 @@
             btn.innerText = "Iscrizione in corso...";
             msg.style.display = "none";
             
-            fetch(scriptURL + "?email=" + encodeURIComponent(email), {
-                method: 'GET',
-                mode: 'no-cors'
+            // INVIO CORRETTO TRAMITE METODO "POST" E FORMATO JSON
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors', // Evita che il browser blocchi la richiesta per sicurezza (CORS)
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8' 
+                },
+                body: JSON.stringify({ email: email }) // Trasforma l'email nel pacchetto JSON che il tuo script aspetta
             }).then(() => {
                 msg.style.display = "block";
                 msg.style.backgroundColor = "#e8f5e9";
