@@ -28,7 +28,7 @@
         .hero {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
             color: white;
-            padding: 40px 20px; /* Spazio verticale ridotto */
+            padding: 40px 20px;
             text-align: center;
             border-bottom-left-radius: 30px;
             border-bottom-right-radius: 30px;
@@ -46,7 +46,7 @@
         }
 
         .hero-img {
-            width: 160px; /* Leggermente ridotta per salvare spazio */
+            width: 160px;
             border-radius: 20px;
             border: 4px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 12px 35px rgba(0,0,0,0.3);
@@ -77,7 +77,7 @@
             font-family: 'Courier New', Courier, monospace; 
             font-size: 0.9rem;
             color: #ffffff;
-            margin-top: 10px; /* Margine ridotto per stare vicino al testo */
+            margin-top: 10px;
             backdrop-filter: blur(4px);
         }
 
@@ -103,6 +103,24 @@
         
         .category-section h2 { color: var(--secondary); margin-bottom: 5px; text-align: center; font-size: 2rem;}
         .category-section p.subtitle { color: var(--primary); font-weight: 600; text-align: center; margin-top: 0; margin-bottom: 30px; }
+
+        /* --- STACCO VISIVO: ISOLA COLORATA --- */
+        .category-alt {
+            background: linear-gradient(145deg, #e3ecf5 0%, #edf3f8 100%);
+            padding: 45px 30px;
+            border-radius: 30px;
+            margin: 60px 0;
+            border: 1px solid rgba(0, 74, 153, 0.05);
+            box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.02);
+        }
+        
+        @media (max-width: 768px) {
+            .category-alt {
+                padding: 35px 15px;
+                border-radius: 20px;
+                margin: 50px 0;
+            }
+        }
 
         /* GRIGLIE RESPONSIVE FIXATE PER MOBILE */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 20px; }
@@ -207,12 +225,18 @@
             
             <div class="category-section">
                 <h2>Strumenti Operativi</h2>
-                <p class="subtitle">Test, utilità e aggiornamenti per il lavoro quotidiano.</p>
+                <p class="subtitle">Utilità e aggiornamenti per il lavoro quotidiano.</p>
                 <div class="grid">
                     <div class="card" style="border: 2px solid var(--primary);" onclick="showSection('area-test')">
                         <span style="font-size:2.5rem;">📝</span>
                         <h3>Area test e simulatori</h3>
                         <p>Mettiti alla prova: verifica le tue competenze su DigComp 2.2, sicurezza, normativa scolastica e informatica.</p>
+                    </div>
+                    
+                    <div class="card" onclick="showSection('coming-soon')">
+                        <span style="font-size:2.5rem;">🚒</span>
+                        <h3>Corsi e Formazione</h3>
+                        <p>Sicurezza sul lavoro, antincendio, primo soccorso e certificazioni utili.</p>
                     </div>
                     
                     <div class="card" onclick="showSection('newsletter-section')">
@@ -229,7 +253,7 @@
                 </div>
             </div>
 
-            <div class="category-section">
+            <div class="category-section category-alt">
                 <h2>La Professione</h2>
                 <p class="subtitle">Tutto quello che c'è da sapere per iniziare e crescere come AT.</p>
                 <div class="grid">
@@ -247,11 +271,6 @@
                         <span style="font-size:2.5rem;">📈</span>
                         <h3>Avanzamento di carriera</h3>
                         <p>Posizioni economiche, passaggi di profilo e ricostruzione di carriera.</p>
-                    </div>
-                    <div class="card" onclick="showSection('coming-soon')">
-                        <span style="font-size:2.5rem;">🚒</span>
-                        <h3>Corsi e Formazione</h3>
-                        <p>Sicurezza sul lavoro, antincendio, primo soccorso e certificazioni utili.</p>
                     </div>
                 </div>
             </div>
@@ -286,14 +305,14 @@
             
             <p style="text-align: center; margin-bottom: 35px; font-size: 1.05rem; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; color: #444;">
                 Un'area pensata sia per gli <strong>Assistenti Tecnici in servizio</strong> che per gli <strong>aspiranti ATA</strong> che vogliono scoprire e prepararsi a questa professione.<br><br>
-                Troverai test aperti a tutti e simulatori riservati ai lettori dei manuali, perfetti per studiare e ripassare argomenti chiave come il <strong>DigComp 2.2, la normativa scolastica, la privacy e la sicurezza (D.Lgs. 81/08)</strong>. Scegli il tuo livello e mettiti alla prova!
+                Troverai test aperti a tutti e simulatori riservati ai lettori dei manuali, perfetti per studiare e ripassare argomenti chiave come il <strong>DigComp 2.2, la normativa scolastica, la privacy e la sicurezza (D.Lgs. 81/08)</strong>. Scegli il tuo test e mettiti alla prova!
             </p>
             
             <div class="grid" style="max-width: 800px; margin: 0 auto;">
-                <div class="card" onclick="window.open('https://forms.gle/6qDLEak6GL7SiVSM6', '_blank')">
+                <div class="card" onclick="window.open('https://forms.gle/hzdB83C6mJB8a9MPA', '_blank')">
                     <span style="font-size:2.5rem;">💻</span>
                     <h3>50 Domande Aperte</h3>
-                    <p>Accesso libero. Un check rapido sulle conoscenze operative basilari e trasversali richieste oggi nel mondo ATA.</p>
+                    <p>Accesso libero. Test operativo ATA: un check rapido sulle conoscenze operative basilari e trasversali richieste oggi nel mondo ATA.</p>
                 </div>
                 
                 <div class="card" style="border: 2px solid var(--primary);" onclick="showSection('quiz-auth')">
@@ -412,9 +431,9 @@
 
     <footer class="footer">
         <div class="footer-container">
-            <p style="font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">&copy; 2026 G. Caruso - Hub Assistente Tecnico ATA</p>
+            <p style="font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">&copy; 2026 Hub Assistente Tecnico ATA - G. Caruso</p>
             <p style="font-size: 0.85rem; max-width: 600px; margin: 0 auto 15px; line-height: 1.4;">
-                Hub digitale non ufficiale, creato per la formazione del personale ATA.
+                Hub digitale non ufficiale, creato da un tecnico di laboratorio delle scuole superiori.
             </p>
             <p style="font-size: 0.9rem;">
                 <a href="chi-sono.html#contatti">Contattami</a>
@@ -450,11 +469,8 @@
             }
         }
 
-        // --- FUNZIONE INVIO NEWSLETTER (GOOGLE SCRIPT + HONEYPOT) ---
         function submitToGoogle(e) {
             e.preventDefault();
-            
-            // Controllo Anti-Bot (Honeypot)
             const honeyPot = document.getElementById('work-address').value;
             if (honeyPot !== "") {
                 console.warn("Tentativo bot bloccato");
@@ -470,14 +486,11 @@
             btn.innerText = "Iscrizione in corso...";
             msg.style.display = "none";
             
-            // INVIO CORRETTO TRAMITE METODO "POST" E FORMATO JSON
             fetch(scriptURL, {
                 method: 'POST',
-                mode: 'no-cors', // Evita che il browser blocchi la richiesta per sicurezza (CORS)
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8' 
-                },
-                body: JSON.stringify({ email: email }) // Trasforma l'email nel pacchetto JSON che il tuo script aspetta
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({ email: email })
             }).then(() => {
                 msg.style.display = "block";
                 msg.style.backgroundColor = "#e8f5e9";
@@ -497,7 +510,6 @@
                 btn.innerText = "Iscriviti Ora";
             });
         }
-        // --------------------------------------------------------
 
         function mescolaArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -518,24 +530,21 @@
                 if (!response.ok) throw new Error("File domande.json non trovato.");
                 
                 let data = await response.json();
-                
                 domandeQuiz = mescolaArray(data);
                 
                 domandeQuiz.forEach(q => {
                     let opzioniConIndice = q.opzioni.map((testo, index) => ({ testo, isCorretta: index === q.corretta }));
                     opzioniConIndice = mescolaArray(opzioniConIndice);
-                    
                     q.opzioniMescolate = opzioniConIndice.map(opt => opt.testo);
                     q.indiceCorrettoMescolato = opzioniConIndice.findIndex(opt => opt.isCorretta);
                 });
 
                 mostraDomanda();
-
             } catch (error) {
                 document.getElementById('quiz-setup').innerHTML = `
                     <button onclick="location.reload()" class="btn-back-hub">← Torna all'Hub</button>
                     <h2 style="color: #ff6b6b; text-align: center;">Errore di caricamento</h2>
-                    <p style="text-align: center;">Non riesco a trovare il file <strong>domande.json</strong>. Assicurati di averlo caricato nella stessa cartella di index.html su GitHub!</p>
+                    <p style="text-align: center;">Non riesco a trovare il file <strong>domande.json</strong>. Assicurati di averlo caricato su GitHub!</p>
                 `;
             }
         }
@@ -547,14 +556,11 @@
             let html = `
                 <div style="max-width: 800px; margin: 0 auto; text-align: left;">
                     <button onclick="location.reload()" class="btn-back-hub">← Esci dal Quiz</button>
-                    
                     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg); padding-bottom: 10px; margin-bottom: 20px;">
                         <span style="font-weight: bold; color: var(--secondary);">Domanda ${domandaCorrente + 1} di ${domandeQuiz.length}</span>
                         <span style="background: var(--bg); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">Punteggio: ${punteggio}</span>
                     </div>
-
                     <h3 style="font-size: 1.3rem; margin-bottom: 30px;">${q.domanda}</h3>
-                    
                     <div style="display: flex; flex-direction: column; gap: 15px;">
             `;
 
@@ -572,7 +578,6 @@
                     <div id="feedback-container" style="display:none; margin-top: 25px; padding: 20px; border-radius: 8px;"></div>
                 </div>
             `;
-            
             quizContainer.innerHTML = html;
             window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }
@@ -580,28 +585,19 @@
         function verificaRisposta(indiceSelezionato) {
             const q = domandeQuiz[domandaCorrente];
             const isCorretta = (indiceSelezionato === q.indiceCorrettoMescolato);
-            
-            risposteUtente.push({
-                domanda: q.domanda,
-                corretta: isCorretta,
-                spiegazione: q.spiegazione
-            });
+            risposteUtente.push({ domanda: q.domanda, corretta: isCorretta, spiegazione: q.spiegazione });
 
-            if (isCorretta) {
-                punteggio++;
-            }
+            if (isCorretta) punteggio++;
 
             for(let i=0; i<q.opzioniMescolate.length; i++) {
                 const btn = document.getElementById(`btn-opt-${i}`);
                 btn.disabled = true;
-                
                 if(i === q.indiceCorrettoMescolato) {
                     btn.style.borderColor = "#4caf50";
                     btn.style.backgroundColor = "#e8f5e9";
                     btn.style.color = "#2e7d32";
                     btn.style.fontWeight = "bold";
-                } 
-                else if(i === indiceSelezionato && !isCorretta) {
+                } else if(i === indiceSelezionato && !isCorretta) {
                     btn.style.borderColor = "#f44336";
                     btn.style.backgroundColor = "#ffebee";
                     btn.style.color = "#c62828";
@@ -612,7 +608,6 @@
             feedbackDiv.style.display = "block";
             feedbackDiv.style.backgroundColor = isCorretta ? "#e8f5e9" : "#ffebee";
             feedbackDiv.style.border = `1px solid ${isCorretta ? "#4caf50" : "#f44336"}`;
-            
             feedbackDiv.innerHTML = `
                 <h4 style="margin-top:0; color: ${isCorretta ? '#2e7d32' : '#c62828'};">
                     ${isCorretta ? '✅ Risposta Esatta!' : '❌ Risposta Sbagliata!'}
@@ -620,42 +615,33 @@
                 <p style="margin-bottom: 20px;"><strong>Spiegazione:</strong> ${q.spiegazione}</p>
                 <button class="btn" onclick="prossimaDomanda()" style="width: auto; padding: 10px 25px;">Avanti ➔</button>
             `;
-            
             feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function prossimaDomanda() {
             domandaCorrente++;
-            if (domandaCorrente < domandeQuiz.length) {
-                mostraDomanda();
-            } else {
-                mostraRisultato();
-            }
+            if (domandaCorrente < domandeQuiz.length) mostraDomanda();
+            else mostraRisultato();
         }
 
         function mostraRisultato() {
             const quizContainer = document.getElementById('quiz-setup');
             const percentuale = Math.round((punteggio / domandeQuiz.length) * 100);
-            
-            let messaggio = "";
-            if(percentuale >= 80) messaggio = "Ottimo lavoro! La tua preparazione è solida.";
-            else if(percentuale >= 60) messaggio = "Buon risultato, ma c'è margine di miglioramento.";
-            else messaggio = "Hai bisogno di ripassare un po' di più il manuale.";
+            let messaggio = percentuale >= 80 ? "Ottimo lavoro! La tua preparazione è solida." : (percentuale >= 60 ? "Buon risultato, ma c'è margine di miglioramento." : "Hai bisogno di ripassare un po' di più il manuale.");
 
             let html = `
                 <div style="max-width: 800px; margin: 0 auto; text-align: center;">
                     <h2 style="color: var(--secondary); font-size: 2.5rem; margin-bottom: 10px;">Quiz Completato!</h2>
                     <p style="font-size: 1.5rem; margin-top: 0;">Hai totalizzato <strong>${punteggio}</strong> su ${domandeQuiz.length} (${percentuale}%)</p>
                     <p style="font-size: 1.1rem; color: #555; margin-bottom: 40px;">${messaggio}</p>
-                    
                     <button class="btn" onclick="location.reload()" style="max-width: 300px; margin-bottom: 40px;">Torna all'Hub</button>
             `;
 
             const errori = risposteUtente.filter(r => !r.corretta);
-            
             if(errori.length > 0) {
                 html += `
-                    <div style="text-align: left; background: var(--bg); padding: 30px; border-radius: 12px; margin-bottom: 30px;\">\n                        <h3 style=\"color: var(--secondary); margin-top: 0; border-bottom: 2px solid white; padding-bottom: 10px;\">Riepilogo Errori</h3>
+                    <div style="text-align: left; background: var(--bg); padding: 30px; border-radius: 12px; margin-bottom: 30px;">
+                        <h3 style="color: var(--secondary); margin-top: 0; border-bottom: 2px solid white; padding-bottom: 10px;">Riepilogo Errori</h3>
                 `;
                 errori.forEach((err, i) => {
                     html += `
@@ -669,7 +655,6 @@
             }
             
             html += `<button onclick="location.reload()" class="btn-back-hub" style="margin-bottom: 40px;">← Torna all'Hub</button></div>`;
-            
             quizContainer.innerHTML = html;
             window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }
