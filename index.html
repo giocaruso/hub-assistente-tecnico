@@ -321,7 +321,7 @@
         </div>
 
         <div id="quiz-auth" class="section">
-            <button onclick="location.reload()" class="btn-back-hub">← Torna all'Hub</button>
+            <button onclick="showSection('area-test')" class="btn-back-hub">← Indietro</button>
             
             <div style="max-width: 800px; margin: 0 auto;">
                 <h2 style="color: var(--secondary); text-align: center; margin-bottom: 30px; font-size: 2rem;">Quiz dell'AT: Preparazione e Competenze</h2>
@@ -430,8 +430,11 @@
         
         function checkAuth() {
             const val = document.getElementById('pass-word').value.toLowerCase().trim();
-            if(btoa(val) === SECRET_HASH) loadQuizData();
-            else alert("Parola non corretta!");
+            if(btoa(val) === SECRET_HASH) {
+                loadQuizData();
+            } else {
+                alert("Parola non corretta! Verifica sul manuale.");
+            }
         }
 
         function submitToGoogle(e) {
@@ -466,10 +469,20 @@
         async function loadQuizData() {
             try {
                 const response = await fetch('domande.json');
+                if (!response.ok) throw new Error("File json non trovato");
                 const data = await response.json();
-                databaseDomandeTotale = data; // Salviamo tutte le domande intatte
-                mostraSceltaBlocchi(); // Chiamiamo la nuova funzione invece di partire subito
-            } catch (e) { alert("Errore caricamento quiz. Verifica che il file domande.json sia online."); }
+                
+                // Controlliamo che i dati siano validi e contengano domande
+                if (data && data.length > 0) {
+                    databaseDomandeTotale = data;
+                    mostraSceltaBlocchi(); 
+                } else {
+                    alert("Il file domande.json è vuoto o formattato male.");
+                }
+            } catch (e) { 
+                alert("Errore di connessione o file domande.json non trovato. Stai testando in locale? Ricorda di caricarlo su GitHub per vederlo funzionare!"); 
+                console.error(e);
+            }
         }
 
         function mostraSceltaBlocchi() {
@@ -478,7 +491,7 @@
             
             document.getElementById('quiz-setup').innerHTML = `
                 <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <button onclick="location.reload()" class="btn-back-hub" style="float:left;">← Torna all'Hub</button>
+                    <button onclick="showSection('quiz-auth')" class="btn-back-hub" style="float:left;">← Indietro</button>
                     <div style="clear: both;"></div>
                     
                     <h2 style="color: var(--secondary); margin-bottom: 20px; font-size: 2rem;">Quante domande vuoi affrontare?</h2>
@@ -496,11 +509,9 @@
         }
 
         function preparaQuiz(numeroDomandeScelte) {
-            // Prendiamo una copia del database totale, la mescoliamo e tagliamo il numero di domande scelto
             let copiaDati = [...databaseDomandeTotale];
             domandeQuiz = mescolaArray(copiaDati).slice(0, numeroDomandeScelte);
             
-            // Per ogni domanda selezionata, rimescoliamo anche l'ordine delle opzioni
             domandeQuiz.forEach(q => {
                 let opts = q.opzioni.map((testo, index) => ({ testo, isCorretta: index === q.corretta }));
                 opts = mescolaArray(opts);
@@ -508,25 +519,29 @@
                 q.indiceCorrettoMescolato = opts.findIndex(opt => opt.isCorretta);
             });
             
-            // Resettiamo le variabili prima di avviare il quiz
             domandaCorrente = 0;
             punteggio = 0;
             risposteUtente = [];
             
-            mostraDomanda(); // Avviamo la prima domanda
+            mostraDomanda(); 
         }
 
         function mostraDomanda() {
             const q = domandeQuiz[domandaCorrente];
             document.getElementById('quiz-setup').innerHTML = `
                 <div style="max-width: 800px; margin: 0 auto; text-align: left;">
-                    <button onclick="location.reload()" class="btn-back-hub">← Esci</button>
-                    <p>Domanda ${domandaCorrente + 1} di ${domandeQuiz.length} | Punteggio: ${punteggio}</p>
-                    <h3 style="margin-bottom: 30px;">${q.domanda}</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <button onclick="mostraSceltaBlocchi()" class="btn-back-hub" style="margin-bottom: 0;">← Cambia Blocco</button>
+                        <button onclick="location.reload()" class="btn-back-hub" style="margin-bottom: 0; background: #ffebee; color: #c62828; border-color: #c62828;">Esci all'Hub</button>
+                    </div>
+                    <p style="font-weight: bold; color: var(--secondary); border-bottom: 2px solid var(--bg); padding-bottom: 10px;">
+                        Domanda ${domandaCorrente + 1} di ${domandeQuiz.length} | Punteggio: ${punteggio}
+                    </p>
+                    <h3 style="margin-bottom: 30px; font-size: 1.3rem;">${q.domanda}</h3>
                     <div style="display: flex; flex-direction: column; gap: 15px;">
                         ${q.opzioniMescolate.map((opt, i) => `
                             <button id="btn-opt-${i}" class="btn-opzione" onclick="verificaRisposta(${i})" 
-                                    style="background: white; border: 2px solid var(--bg); padding: 15px; border-radius: 8px; text-align: left; cursor: pointer;">
+                                    style="background: white; border: 2px solid var(--bg); padding: 15px; border-radius: 8px; text-align: left; font-size: 1.05rem; cursor: pointer;">
                                 ${opt}
                             </button>`).join('')}
                     </div>
@@ -543,15 +558,26 @@
 
             document.querySelectorAll('.btn-opzione').forEach((btn, i) => {
                 btn.disabled = true;
-                if(i === q.indiceCorrettoMescolato) btn.style.backgroundColor = "#e8f5e9";
-                else if(i === idx) btn.style.backgroundColor = "#ffebee";
+                if(i === q.indiceCorrettoMescolato) {
+                    btn.style.backgroundColor = "#e8f5e9";
+                    btn.style.borderColor = "#4caf50";
+                    btn.style.color = "#2e7d32";
+                    btn.style.fontWeight = "bold";
+                } else if(i === idx) {
+                    btn.style.backgroundColor = "#ffebee";
+                    btn.style.borderColor = "#f44336";
+                    btn.style.color = "#c62828";
+                }
             });
 
             const feed = document.getElementById('feedback-container');
             feed.style.display = "block";
             feed.style.backgroundColor = correct ? "#e8f5e9" : "#ffebee";
-            feed.innerHTML = `<h4>${correct ? '✅ Esatto!' : '❌ Errore'}</h4><p>${q.spiegazione}</p>
-                              <button class="btn" onclick="prossimaDomanda()" style="width: auto;">Avanti ➔</button>`;
+            feed.style.border = `1px solid ${correct ? '#4caf50' : '#f44336'}`;
+            feed.innerHTML = `<h4 style="margin-top:0; color: ${correct ? '#2e7d32' : '#c62828'};">${correct ? '✅ Esatto!' : '❌ Errore'}</h4>
+                              <p style="margin-bottom: 20px;"><strong>Spiegazione:</strong> ${q.spiegazione}</p>
+                              <button class="btn" onclick="prossimaDomanda()" style="width: auto; padding: 10px 25px;">Avanti ➔</button>`;
+            feed.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function prossimaDomanda() {
@@ -563,17 +589,31 @@
         function mostraRisultato() {
             const perc = Math.round((punteggio / domandeQuiz.length) * 100);
             const errori = risposteUtente.filter(r => !r.corretta);
+            let messaggioFinale = perc >= 80 ? "Ottimo lavoro! Preparazione solida." : (perc >= 60 ? "Buon risultato, ma puoi migliorare." : "Hai bisogno di ripassare il manuale.");
+            
             document.getElementById('quiz-setup').innerHTML = `
                 <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <h2>Quiz Completato!</h2>
-                    <p style="font-size: 1.5rem;">Punteggio: ${punteggio}/${domandeQuiz.length} (${perc}%)</p>
+                    <h2 style="color: var(--secondary); font-size: 2.5rem; margin-bottom: 10px;">Quiz Completato!</h2>
+                    <p style="font-size: 1.5rem; margin-top: 0;">Punteggio: <strong>${punteggio}/${domandeQuiz.length}</strong> (${perc}%)</p>
+                    <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">${messaggioFinale}</p>
+                    
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+                        <button class="btn-back-hub" onclick="mostraSceltaBlocchi()" style="margin-bottom: 0;">↻ Nuova Simulazione</button>
+                        <button class="btn" onclick="location.reload()" style="max-width: 200px; margin-bottom: 0;">Torna all'Hub</button>
+                    </div>
+
                     ${errori.length > 0 ? `
-                        <div style="text-align: left; background: var(--bg); padding: 30px; border-radius: 12px; margin-top: 30px;">
-                            <h3>Riepilogo Errori:</h3>
-                            ${errori.map(err => `<p><strong>${err.domanda}</strong><br><small>${err.spiegazione}</small></p>`).join('')}
+                        <div style="text-align: left; background: var(--bg); padding: 30px; border-radius: 12px; margin-top: 30px; margin-bottom: 40px;">
+                            <h3 style="color: var(--secondary); margin-top: 0; border-bottom: 2px solid white; padding-bottom: 10px;">Riepilogo Errori:</h3>
+                            ${errori.map((err, i) => `
+                                <div style="margin-bottom: 25px;">
+                                    <p style="font-weight: bold; margin-bottom: 5px;">${i+1}. ${err.domanda}</p>
+                                    <p style="margin-top: 0; color: #d32f2f; font-size: 0.95rem;"><em>Spiegazione:</em> ${err.spiegazione}</p>
+                                </div>
+                            `).join('')}
                         </div>` : ''}
-                    <button class="btn" onclick="location.reload()" style="margin-top: 30px;">Torna all'Hub</button>
                 </div>`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
