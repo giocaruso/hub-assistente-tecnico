@@ -122,7 +122,6 @@
             }
         }
 
-        /* GRIGLIE RESPONSIVE FIXATE PER MOBILE */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 20px; }
         .manuali-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 30px; margin-top: 30px; }
         
@@ -155,7 +154,6 @@
         .manual-card h4 { margin: 10px 0 5px 0; font-size: 1.1rem; color: var(--secondary); font-weight: 700; }
         .manual-subtitle { font-size: 0.85rem; color: #555; margin-bottom: 0; text-align: center; }
 
-        /* SEZIONI CON PADDING ADATTIVO PER SMARTPHONE E PC */
         .section { display: none; background: white; padding: 25px 15px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: 20px; }
         @media (min-width: 768px) {
             .section { padding: 40px; }
@@ -166,7 +164,6 @@
         .btn:disabled { opacity: 0.7; cursor: not-allowed; }
         
         .btn-opzione:hover:not(:disabled) { background-color: var(--bg) !important; border-color: var(--primary) !important; }
-        .btn-opzione:disabled { cursor: default; }
 
         .btn-back-hub {
             display: inline-block;
@@ -292,7 +289,7 @@
                     <div class="manual-card" onclick="window.open('https://amzn.eu/d/03SaaHGU', '_blank')" title="Scoprilo su Amazon">
                         <img src="img/copertina-tutti-possono.jpg" class="manual-img" alt="Posizioni Economiche">
                         <h4>Tutti possono fare l'AT</h4>
-                        <p class="manual-subtitle">Per tutti coloro che vogliono iscriversi nelle graduatorie come tecnico di laboratorio informatico e hanno timore di non esserne all'altezza.</p>
+                        <p class="manual-subtitle">Per tutti coloro che vogliono iscriversi nelle graduatorie come tecnico di laboratorio informatico.</p>
                     </div>
                 </div>
             </div>
@@ -304,210 +301,128 @@
             <h2 style="color: var(--secondary); text-align: center; margin-bottom: 15px; font-size: 2rem;">Area test e simulatori</h2>
             
             <p style="text-align: center; margin-bottom: 35px; font-size: 1.05rem; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; color: #444;">
-                Un'area pensata sia per gli <strong>Assistenti Tecnici in servizio</strong> che per gli <strong>aspiranti ATA</strong> che vogliono scoprire e prepararsi a questa professione.<br><br>
-                Troverai test aperti a tutti e simulatori riservati ai lettori dei manuali, perfetti per studiare e ripassare argomenti chiave come il <strong>DigComp 2.2, la normativa scolastica, la privacy e la sicurezza (D.Lgs. 81/08)</strong>. Scegli il tuo test e mettiti alla prova!
+                Un'area pensata sia per gli <strong>Assistenti Tecnici in servizio</strong> che per gli <strong>aspiranti ATA</strong>.<br><br>
+                Troverai test aperti a tutti e simulatori riservati ai lettori dei manuali su <strong>DigComp 2.2, normativa scolastica e sicurezza</strong>. Scegli il tuo test e mettiti alla prova!
             </p>
             
             <div class="grid" style="max-width: 800px; margin: 0 auto;">
-                <div class="card" onclick="window.open('https://forms.gle/hzdB83C6mJB8a9MPA', '_blank')">
+                <div class="card" onclick="window.open('https://forms.gle/jEkFvGy3gy3onvXv6', '_blank')">
                     <span style="font-size:2.5rem;">💻</span>
                     <h3>50 Domande Aperte</h3>
-                    <p>Accesso libero. Test operativo ATA: un check rapido sulle conoscenze operative basilari e trasversali richieste oggi nel mondo ATA.</p>
+                    <p>Accesso libero. Test operativo ATA: un check rapido sulle conoscenze basilari richieste oggi.</p>
                 </div>
                 
                 <div class="card" style="border: 2px solid var(--primary);" onclick="showSection('quiz-auth')">
                     <span style="font-size:2.5rem;">📝</span>
                     <h3>Simulatore 200 Quiz</h3>
-                    <p>Accesso riservato. Include domande avanzate sul DigComp 2.2, normativa, sicurezza e casi pratici di laboratorio.</p>
+                    <p>Accesso riservato. Include domande avanzate su DigComp 2.2, normativa e casi pratici.</p>
                 </div>
             </div>
         </div>
 
         <div id="quiz-auth" class="section">
             <button onclick="location.reload()" class="btn-back-hub">← Torna all'Hub</button>
-            
             <div style="max-width: 800px; margin: 0 auto;">
                 <h2 style="color: var(--secondary); text-align: center; margin-bottom: 30px; font-size: 2rem;">Quiz dell'AT: Preparazione e Competenze</h2>
-                
                 <div class="quiz-intro-wrapper">
-                    <a href="https://amzn.eu/d/0iFVNuCY" target="_blank" class="quiz-cover-link" title="Acquista o visualizza su Amazon">
+                    <a href="https://amzn.eu/d/0iFVNuCY" target="_blank" class="quiz-cover-link">
                         <img src="img/copertina-200quiz.jpg" alt="Copertina Quiz 200" class="quiz-cover-img">
                     </a>
-                    
                     <div>
                         <p style="font-size: 1.05rem; margin-top: 0; line-height: 1.6;">
-                            Questo simulatore contiene le 200 domande interattive tratte dal mio libro pubblicato su Amazon: <br>
+                            Questo simulatore contiene le 200 domande tratte dal manuale Amazon: <br>
                             <a href="https://amzn.eu/d/0iFVNuCY" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: underline;"><em>"Quiz dell'Assistente Tecnico delle scuole"</em></a>.
                         </p>
-
                         <p style="font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px;">
-                            Vuoi misurare il tuo livello di competenza professionale o prepararti in vista delle posizioni economiche ATA? Questo strumento va dritto al sodo attraverso un metodo di apprendimento attivo, pensato da un tecnico per i tecnici.
+                            Ogni risposta ha una spiegazione sintetica per trasformare l'errore in un'occasione di ripasso.
                         </p>
-                        
-                        <div style="margin-top: 20px; text-align: left;">
-                            <p style="margin-top: 0; font-weight: bold; color: var(--secondary);">Cosa troverai in questo simulatore:</p>
-                            <ul style="line-height: 1.6; padding-left: 20px; margin-top: 5px;">
-                                <li style="margin-bottom: 8px;"><strong>200 Quiz Mirati:</strong> Coprono tutti gli argomenti fondamentali (normativa, sicurezza, gestione documentale, informatica e IA).</li>
-                                <li style="margin-bottom: 8px;"><strong>Soluzioni Commentate:</strong> Ogni risposta ha una spiegazione sintetica per trasformare l'errore in un'occasione di ripasso.</li>
-                                <li><strong>Sistema Anti-Memoria:</strong> L'algoritmo rimescola casualmente l'ordine delle domande a ogni avvio.</li>
-                            </ul>
-                        </div>
-
-                        <div style="margin-top: 25px; text-align: left;">
-                            <p style="margin-top: 0; font-weight: bold; color: var(--secondary);">A chi è rivolto:</p>
-                            <ul style="line-height: 1.6; padding-left: 20px; margin-top: 5px;">
-                                <li style="margin-bottom: 8px;"><strong>Assistenti Tecnici in servizio e personale ATA:</strong> per consolidare le competenze quotidiane o prepararsi ai passaggi per le posizioni economiche.</li>
-                                <li><strong>Aspiranti Tecnici:</strong> per chi desidera inserirsi nelle graduatorie e vuole scoprire esattamente quali argomenti e casistiche pratiche bisogna conoscere per affrontare questo mestiere con sicurezza.</li>
-                            </ul>
-                        </div>
-
-                        <div style="margin-top: 25px; text-align: left;">
-                            <p style="margin-top: 0; font-weight: bold; color: var(--secondary);">Argomenti trattati nel dettaglio:</p>
-                            <ul style="line-height: 1.6; padding-left: 20px; margin-top: 5px;">
-                                <li style="margin-bottom: 8px;"><strong>DigComp 2.2:</strong> le competenze digitali fondamentali (Syllabus) richieste oggi nella Pubblica Amministrazione.</li>
-                                <li style="margin-bottom: 8px;"><strong>Normativa e Sicurezza:</strong> legislazione scolastica, privacy (GDPR) e sicurezza sul lavoro nei laboratori (D.Lgs. 81/08).</li>
-                                <li><strong>Informatica, Hardware e Innovazione:</strong> reti, software, piattaforme scolastiche e nuove tecnologie.</li>
-                            </ul>
-                        </div>
-                        
                         <div style="background: var(--bg); padding: 20px; border-radius: 12px; border: 1px dashed var(--primary); margin-top: 30px;">
                             <p style="margin-top: 0; font-weight: bold; color: var(--secondary);">Come accedere:</p>
-                            <p style="margin-bottom: 0;">Prendi o apri una copia del manuale, vai alla sezione delle soluzioni, cerca la spiegazione relativa alla <strong>domanda n. 187</strong> e inserisci qui sotto la <strong>prima parola</strong> esatta di quel testo.</p>
+                            <p style="margin-bottom: 0;">Cerca la spiegazione alla <strong>domanda n. 187</strong> del manuale e inserisci la <strong>prima parola</strong> esatta.</p>
                         </div>
                     </div>
                 </div>
-                
                 <div style="text-align:center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
                     <input type="text" id="pass-word" placeholder="Inserisci la parola segreta..." style="padding:15px; border-radius:8px; border:1px solid #ccc; width:100%; max-width:300px; margin-bottom: 15px; font-size: 1rem;">
                     <br>
-                    <button class="btn" onclick="checkAuth()" style="max-width:300px; font-size: 1.1rem; margin-bottom: 30px;">Sblocca e Avvia Simulatore</button>
+                    <button class="btn" onclick="checkAuth()" style="max-width:300px;">Sblocca e Avvia Simulatore</button>
                 </div>
             </div>
-            <button onclick="location.reload()" class="btn-back-hub" style="margin-top: 20px;">← Torna all'Hub</button>
         </div>
 
-        <div id="quiz-setup" class="section">
-        </div>
+        <div id="quiz-setup" class="section"></div>
 
         <div id="newsletter-section" class="section" style="max-width: 600px; margin: 0 auto; text-align: center;">
             <button onclick="location.reload()" class="btn-back-hub" style="float: left;">← Torna all'Hub</button>
             <div style="clear: both;"></div>
-            
             <span style="font-size: 4rem;">📩</span>
             <h2 style="color: var(--secondary);">Iscriviti alla Newsletter</h2>
-            <p style="font-size: 1.05rem; margin-bottom: 30px;">Ricevi aggiornamenti sulle ultime novità da questo Hub, concorsi, manuali e nuovi strumenti pensati per gli Assistenti Tecnici.</p>
-            
-           <form id="newsletter-form" onsubmit="submitToGoogle(event)">
-                <input type="text" id="work-address" name="work-address" style="display:none;" tabindex="-1" autocomplete="off">
-                
-                <input type="email" id="email-input" placeholder="Inserisci la tua email..." required style="padding:15px; border-radius:8px; border:1px solid #ccc; width:100%; max-width:300px; margin-bottom: 15px; font-size: 1rem;">
-                
-               <div style="text-align: left; max-width: 300px; margin: 0 auto 15px auto; font-size: 0.85rem; color: #555;">
-                    <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer;">
-                        <input type="checkbox" required style="margin-top: 3px;">
-                        <span>Acconsento al trattamento della mia email esclusivamente per ricevere la newsletter dell'Hub.</span>
+            <form id="newsletter-form" onsubmit="submitToGoogle(event)">
+                <input type="text" id="work-address" name="work-address" style="display:none;" tabindex="-1">
+                <input type="email" id="email-input" placeholder="La tua email..." required style="padding:15px; border-radius:8px; border:1px solid #ccc; width:100%; max-width:300px; margin-bottom: 15px;">
+                <div style="text-align: left; max-width: 300px; margin: 0 auto 15px auto; font-size: 0.85rem;">
+                    <label style="display: flex; align-items: flex-start; gap: 8px;">
+                        <input type="checkbox" required>
+                        <span>Acconsento al trattamento dati per la newsletter dell'Hub.</span>
                     </label>
                 </div>
-
-                <button type="submit" class="btn" id="submit-btn" style="max-width:300px; font-size: 1.1rem;">Iscriviti Ora</button>
-                
-               <p style="font-size: 0.8rem; color: #777; margin-top: 15px; max-width: 300px; margin-left: auto; margin-right: auto; line-height: 1.4;">
-                    Potrai cancellare la tua iscrizione in qualsiasi momento cliccando sul link presente in fondo a ogni nostra email.
-                </p>
+                <button type="submit" class="btn" id="submit-btn" style="max-width:300px;">Iscriviti Ora</button>
             </form>
-
             <div id="newsletter-msg" style="margin-top: 20px; font-weight: bold; display: none; padding: 15px; border-radius: 8px;"></div>
         </div>
 
-        <div id="coming-soon" class="section" style="text-align: center; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <div id="coming-soon" class="section" style="text-align: center; max-width: 600px; margin: 0 auto;">
             <button onclick="location.reload()" class="btn-back-hub" style="float: left;">← Torna all'Hub</button>
             <div style="clear: both;"></div>
             <span style="font-size: 4rem;">🚧</span>
             <h2 style="color: var(--secondary);">Lavori in corso...</h2>
-            <p style="font-size: 1.1rem;">Sto preparando e raccogliendo i migliori materiali per arricchire questa sezione. Torna a trovarmi presto per le novità!</p>
+            <p>Sezione in aggiornamento.</p>
         </div>
-
     </div>
 
     <footer class="footer">
         <div class="footer-container">
-            <p style="font-weight: bold; font-size: 1.1rem; margin-bottom: 10px;">&copy; 2026 Hub Assistente Tecnico ATA - G. Caruso</p>
-            <p style="font-size: 0.85rem; max-width: 600px; margin: 0 auto 15px; line-height: 1.4;">
-                Hub digitale non ufficiale, creato da un tecnico di laboratorio delle scuole superiori.
-            </p>
-            <p style="font-size: 0.9rem;">
-                <a href="chi-sono.html#contatti">Contattami</a>
-            </p>
+            <p style="font-weight: bold; font-size: 1.1rem;">&copy; 2026 Hub Assistente Tecnico ATA - G. Caruso</p>
+            <p style="font-size: 0.9rem;"><a href="chi-sono.html#contatti">Contattami</a></p>
         </div>
     </footer>
 
     <script>
         const SECRET_HASH = "cGFzc3dlYg=="; 
-        
-        let domandeQuiz = [];
-        let domandaCorrente = 0;
-        let punteggio = 0;
-        let risposteUtente = []; 
+        let domandeQuiz = [], domandaCorrente = 0, punteggio = 0, risposteUtente = []; 
 
         function showSection(id) {
             document.getElementById('home-hub').style.display = 'none';
             document.querySelector('.hero').style.display = 'none';
-            
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(sec => sec.style.display = 'none');
-            
+            document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
             document.getElementById(id).style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         function checkAuth() {
             const val = document.getElementById('pass-word').value.toLowerCase().trim();
-            if(btoa(val) === SECRET_HASH) {
-                loadQuizData();
-            } else {
-                alert("Parola non corretta. Verifica sul manuale!");
-            }
+            if(btoa(val) === SECRET_HASH) loadQuizData();
+            else alert("Parola non corretta!");
         }
 
         function submitToGoogle(e) {
             e.preventDefault();
-            const honeyPot = document.getElementById('work-address').value;
-            if (honeyPot !== "") {
-                console.warn("Tentativo bot bloccato");
-                return; 
-            }
-
             const email = document.getElementById('email-input').value;
             const btn = document.getElementById('submit-btn');
             const msg = document.getElementById('newsletter-msg');
-            const scriptURL = "https://script.google.com/macros/s/AKfycbxyQUkxrfwyVsu2ws8ACqkRgJUhc_KQ5KoVDNys_sj0NUCOjEPGQ_GGOvm0uIACcAxZNw/exec";
-            
             btn.disabled = true;
-            btn.innerText = "Iscrizione in corso...";
-            msg.style.display = "none";
+            btn.innerText = "Invio...";
             
-            fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
+            fetch("https://script.google.com/macros/s/AKfycbxyQUkxrfwyVsu2ws8ACqkRgJUhc_KQ5KoVDNys_sj0NUCOjEPGQ_GGOvm0uIACcAxZNw/exec", {
+                method: 'POST', mode: 'no-cors',
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify({ email: email })
             }).then(() => {
-                msg.style.display = "block";
-                msg.style.backgroundColor = "#e8f5e9";
-                msg.style.color = "#2e7d32";
-                msg.style.border = "1px solid #4caf50";
-                msg.innerText = "Iscrizione completata con successo! 🎉";
-                document.getElementById('email-input').value = "";
+                msg.style.display = "block"; msg.style.backgroundColor = "#e8f5e9"; msg.innerText = "Iscrizione completata! 🎉";
+                btn.disabled = false; btn.innerText = "Iscriviti Ora";
+            }).catch(() => {
+                msg.style.display = "block"; msg.style.backgroundColor = "#ffebee"; msg.innerText = "Errore. Riprova più tardi.";
                 btn.disabled = false;
-                btn.innerText = "Iscriviti Ora";
-            }).catch(error => {
-                msg.style.display = "block";
-                msg.style.backgroundColor = "#ffebee";
-                msg.style.color = "#c62828";
-                msg.style.border = "1px solid #f44336";
-                msg.innerText = "Errore durante l'iscrizione. Riprova più tardi.";
-                btn.disabled = false;
-                btn.innerText = "Iscriviti Ora";
             });
         }
 
@@ -520,102 +435,56 @@
         }
 
         async function loadQuizData() {
-            document.getElementById('quiz-setup').innerHTML = `
-                <h2 style="text-align: center; color: var(--secondary); margin-top: 50px;">Caricamento Simulatore in corso...</h2>
-            `;
-            showSection('quiz-setup');
-
             try {
                 const response = await fetch('domande.json');
-                if (!response.ok) throw new Error("File domande.json non trovato.");
-                
-                let data = await response.json();
+                const data = await response.json();
                 domandeQuiz = mescolaArray(data);
-                
                 domandeQuiz.forEach(q => {
-                    let opzioniConIndice = q.opzioni.map((testo, index) => ({ testo, isCorretta: index === q.corretta }));
-                    opzioniConIndice = mescolaArray(opzioniConIndice);
-                    q.opzioniMescolate = opzioniConIndice.map(opt => opt.testo);
-                    q.indiceCorrettoMescolato = opzioniConIndice.findIndex(opt => opt.isCorretta);
+                    let opts = q.opzioni.map((testo, index) => ({ testo, isCorretta: index === q.corretta }));
+                    opts = mescolaArray(opts);
+                    q.opzioniMescolate = opts.map(opt => opt.testo);
+                    q.indiceCorrettoMescolato = opts.findIndex(opt => opt.isCorretta);
                 });
-
                 mostraDomanda();
-            } catch (error) {
-                document.getElementById('quiz-setup').innerHTML = `
-                    <button onclick="location.reload()" class="btn-back-hub">← Torna all'Hub</button>
-                    <h2 style="color: #ff6b6b; text-align: center;">Errore di caricamento</h2>
-                    <p style="text-align: center;">Non riesco a trovare il file <strong>domande.json</strong>. Assicurati di averlo caricato su GitHub!</p>
-                `;
-            }
+            } catch (e) { alert("Errore caricamento quiz."); }
         }
 
         function mostraDomanda() {
             const q = domandeQuiz[domandaCorrente];
-            const quizContainer = document.getElementById('quiz-setup');
-            
-            let html = `
+            document.getElementById('quiz-setup').innerHTML = `
                 <div style="max-width: 800px; margin: 0 auto; text-align: left;">
-                    <button onclick="location.reload()" class="btn-back-hub">← Esci dal Quiz</button>
-                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--bg); padding-bottom: 10px; margin-bottom: 20px;">
-                        <span style="font-weight: bold; color: var(--secondary);">Domanda ${domandaCorrente + 1} di ${domandeQuiz.length}</span>
-                        <span style="background: var(--bg); padding: 5px 10px; border-radius: 20px; font-size: 0.9rem;">Punteggio: ${punteggio}</span>
-                    </div>
-                    <h3 style="font-size: 1.3rem; margin-bottom: 30px;">${q.domanda}</h3>
+                    <button onclick="location.reload()" class="btn-back-hub">← Esci</button>
+                    <p>Domanda ${domandaCorrente + 1} di ${domandeQuiz.length} | Punteggio: ${punteggio}</p>
+                    <h3 style="margin-bottom: 30px;">${q.domanda}</h3>
                     <div style="display: flex; flex-direction: column; gap: 15px;">
-            `;
-
-            q.opzioniMescolate.forEach((opzione, index) => {
-                html += `
-                    <button id="btn-opt-${index}" class="btn-opzione" onclick="verificaRisposta(${index})" 
-                            style="background: white; border: 2px solid var(--bg); padding: 15px; border-radius: 8px; text-align: left; font-size: 1.05rem; transition: 0.2s;">
-                        ${opzione}
-                    </button>
-                `;
-            });
-
-            html += `
+                        ${q.opzioniMescolate.map((opt, i) => `
+                            <button id="btn-opt-${i}" class="btn-opzione" onclick="verificaRisposta(${i})" 
+                                    style="background: white; border: 2px solid var(--bg); padding: 15px; border-radius: 8px; text-align: left;">
+                                ${opt}
+                            </button>`).join('')}
                     </div>
                     <div id="feedback-container" style="display:none; margin-top: 25px; padding: 20px; border-radius: 8px;"></div>
-                </div>
-            `;
-            quizContainer.innerHTML = html;
+                </div>`;
             window.scrollTo({ top: 0, behavior: 'smooth' }); 
         }
 
-        function verificaRisposta(indiceSelezionato) {
+        function verificaRisposta(idx) {
             const q = domandeQuiz[domandaCorrente];
-            const isCorretta = (indiceSelezionato === q.indiceCorrettoMescolato);
-            risposteUtente.push({ domanda: q.domanda, corretta: isCorretta, spiegazione: q.spiegazione });
+            const correct = (idx === q.indiceCorrettoMescolato);
+            risposteUtente.push({ domanda: q.domanda, corretta: correct, spiegazione: q.spiegazione });
+            if (correct) punteggio++;
 
-            if (isCorretta) punteggio++;
-
-            for(let i=0; i<q.opzioniMescolate.length; i++) {
-                const btn = document.getElementById(`btn-opt-${i}`);
+            document.querySelectorAll('.btn-opzione').forEach((btn, i) => {
                 btn.disabled = true;
-                if(i === q.indiceCorrettoMescolato) {
-                    btn.style.borderColor = "#4caf50";
-                    btn.style.backgroundColor = "#e8f5e9";
-                    btn.style.color = "#2e7d32";
-                    btn.style.fontWeight = "bold";
-                } else if(i === indiceSelezionato && !isCorretta) {
-                    btn.style.borderColor = "#f44336";
-                    btn.style.backgroundColor = "#ffebee";
-                    btn.style.color = "#c62828";
-                }
-            }
+                if(i === q.indiceCorrettoMescolato) btn.style.backgroundColor = "#e8f5e9";
+                else if(i === idx) btn.style.backgroundColor = "#ffebee";
+            });
 
-            const feedbackDiv = document.getElementById('feedback-container');
-            feedbackDiv.style.display = "block";
-            feedbackDiv.style.backgroundColor = isCorretta ? "#e8f5e9" : "#ffebee";
-            feedbackDiv.style.border = `1px solid ${isCorretta ? "#4caf50" : "#f44336"}`;
-            feedbackDiv.innerHTML = `
-                <h4 style="margin-top:0; color: ${isCorretta ? '#2e7d32' : '#c62828'};">
-                    ${isCorretta ? '✅ Risposta Esatta!' : '❌ Risposta Sbagliata!'}
-                </h4>
-                <p style="margin-bottom: 20px;"><strong>Spiegazione:</strong> ${q.spiegazione}</p>
-                <button class="btn" onclick="prossimaDomanda()" style="width: auto; padding: 10px 25px;">Avanti ➔</button>
-            `;
-            feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            const feed = document.getElementById('feedback-container');
+            feed.style.display = "block";
+            feed.style.backgroundColor = correct ? "#e8f5e9" : "#ffebee";
+            feed.innerHTML = `<h4>${correct ? '✅ Esatto!' : '❌ Errore'}</h4><p>${q.spiegazione}</p>
+                              <button class="btn" onclick="prossimaDomanda()" style="width: auto;">Avanti ➔</button>`;
         }
 
         function prossimaDomanda() {
@@ -625,38 +494,19 @@
         }
 
         function mostraRisultato() {
-            const quizContainer = document.getElementById('quiz-setup');
-            const percentuale = Math.round((punteggio / domandeQuiz.length) * 100);
-            let messaggio = percentuale >= 80 ? "Ottimo lavoro! La tua preparazione è solida." : (percentuale >= 60 ? "Buon risultato, ma c'è margine di miglioramento." : "Hai bisogno di ripassare un po' di più il manuale.");
-
-            let html = `
-                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <h2 style="color: var(--secondary); font-size: 2.5rem; margin-bottom: 10px;">Quiz Completato!</h2>
-                    <p style="font-size: 1.5rem; margin-top: 0;">Hai totalizzato <strong>${punteggio}</strong> su ${domandeQuiz.length} (${percentuale}%)</p>
-                    <p style="font-size: 1.1rem; color: #555; margin-bottom: 40px;">${messaggio}</p>
-                    <button class="btn" onclick="location.reload()" style="max-width: 300px; margin-bottom: 40px;">Torna all'Hub</button>
-            `;
-
+            const perc = Math.round((punteggio / domandeQuiz.length) * 100);
             const errori = risposteUtente.filter(r => !r.corretta);
-            if(errori.length > 0) {
-                html += `
-                    <div style="text-align: left; background: var(--bg); padding: 30px; border-radius: 12px; margin-bottom: 30px;">
-                        <h3 style="color: var(--secondary); margin-top: 0; border-bottom: 2px solid white; padding-bottom: 10px;">Riepilogo Errori</h3>
-                `;
-                errori.forEach((err, i) => {
-                    html += `
-                        <div style="margin-bottom: 25px;">
-                            <p style="font-weight: bold; margin-bottom: 5px;">${i+1}. ${err.domanda}</p>
-                            <p style="margin-top: 0; color: #d32f2f; font-size: 0.95rem;"><em>Spiegazione:</em> ${err.spiegazione}</p>
-                        </div>
-                    `;
-                });
-                html += `</div>`;
-            }
-            
-            html += `<button onclick="location.reload()" class="btn-back-hub" style="margin-bottom: 40px;">← Torna all'Hub</button></div>`;
-            quizContainer.innerHTML = html;
-            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+            document.getElementById('quiz-setup').innerHTML = `
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <h2>Quiz Completato!</h2>
+                    <p style="font-size: 1.5rem;">Punteggio: ${punteggio}/${domandeQuiz.length} (${perc}%)</p>
+                    ${errori.length > 0 ? `
+                        <div style="text-align: left; background: var(--bg); padding: 30px; border-radius: 12px; margin-top: 30px;">
+                            <h3>Riepilogo Errori:</h3>
+                            ${errori.map(err => `<p><strong>${err.domanda}</strong><br><small>${err.spiegazione}</small></p>`).join('')}
+                        </div>` : ''}
+                    <button class="btn" onclick="location.reload()" style="margin-top: 30px;">Torna all'Hub</button>
+                </div>`;
         }
     </script>
 </body>
