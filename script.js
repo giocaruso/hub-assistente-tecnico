@@ -13,7 +13,8 @@ const SECRET_HASH = "cGFzc3dlYg==";
         function checkAuth() {
             const val = document.getElementById('pass-word').value.toLowerCase().trim();
             if(btoa(val) === SECRET_HASH) {
-                loadQuizData();
+                // Se la password è corretta, carica il file del libro
+                loadQuizData('domande.json');
             } else {
                 alert("Parola non corretta! Verifica sul manuale.");
             }
@@ -40,6 +41,24 @@ const SECRET_HASH = "cGFzc3dlYg==";
             });
         }
 
+        // --- NUOVA FUNZIONE: AVVIO QUIZ PUBBLICO (SENZA PASSWORD) ---
+        async function startPublicQuiz(jsonUrl) {
+            const emailInput = document.getElementById('email-antincendio');
+            const email = emailInput ? emailInput.value : '';
+
+            // Se l'utente ha inserito un'email valida, inviala silenziosamente a Google Script
+            if (email && email.includes('@')) {
+                fetch("https://script.google.com/macros/s/AKfycbxyQUkxrfwyVsu2ws8ACqkRgJUhc_KQ5KoVDNys_sj0NUCOjEPGQ_GGOvm0uIACcAxZNw/exec", {
+                    method: 'POST', mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ email: email, fonte: "Quiz Antincendio" })
+                }).catch(e => console.log("Invio email in background non riuscito"));
+            }
+
+            // Procedi subito a caricare il file JSON passato alla funzione
+            loadQuizData(jsonUrl);
+        }
+
         function mescolaArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -48,21 +67,21 @@ const SECRET_HASH = "cGFzc3dlYg==";
             return array;
         }
 
-        async function loadQuizData() {
+        // Funzione di caricamento generica (ora accetta il nome del file da caricare)
+        async function loadQuizData(fileDaCaricare) {
             try {
-                const response = await fetch('domande.json');
+                const response = await fetch(fileDaCaricare);
                 if (!response.ok) throw new Error("File json non trovato");
                 const data = await response.json();
                 
-                // Controlliamo che i dati siano validi e contengano domande
                 if (data && data.length > 0) {
                     databaseDomandeTotale = data;
                     mostraSceltaBlocchi(); 
                 } else {
-                    alert("Il file domande.json è vuoto o formattato male.");
+                    alert("Il file " + fileDaCaricare + " è vuoto o formattato male.");
                 }
             } catch (e) { 
-                alert("Errore di connessione o file domande.json non trovato. Stai testando in locale? Ricorda di caricarlo su GitHub per vederlo funzionare!"); 
+                alert("Errore nel caricamento del file " + fileDaCaricare + ". Se sei sul tuo PC, ricorda che alcuni browser bloccano il caricamento dei JSON locali."); 
                 console.error(e);
             }
         }
@@ -73,7 +92,7 @@ const SECRET_HASH = "cGFzc3dlYg==";
             
             document.getElementById('quiz-setup').innerHTML = `
                 <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                    <button onclick="showSection('quiz-auth')" class="btn-back-hub" style="float:left;">← Indietro</button>
+                    <button onclick="location.reload()" class="btn-back-hub" style="float:left;">← Esci all'Hub</button>
                     <div style="clear: both;"></div>
                     
                     <h2 style="color: var(--secondary); margin-bottom: 20px; font-size: 2rem;">Quante domande vuoi affrontare?</h2>
@@ -171,7 +190,7 @@ const SECRET_HASH = "cGFzc3dlYg==";
         function mostraRisultato() {
             const perc = Math.round((punteggio / domandeQuiz.length) * 100);
             const errori = risposteUtente.filter(r => !r.corretta);
-            let messaggioFinale = perc >= 80 ? "Ottimo lavoro! Preparazione solida." : (perc >= 60 ? "Buon risultato, ma puoi migliorare." : "Hai bisogno di ripassare il manuale.");
+            let messaggioFinale = perc >= 80 ? "Ottimo lavoro! Preparazione solida." : (perc >= 60 ? "Buon risultato, ma puoi migliorare." : "Hai bisogno di ripassare la normativa.");
             
             document.getElementById('quiz-setup').innerHTML = `
                 <div style="max-width: 800px; margin: 0 auto; text-align: center;">
