@@ -329,7 +329,6 @@
     "corretta": 1,
     "spiegazione": "Se focalizzati, i raggi solari possono raggiungere i 10-20 kW/m² nel punto focale, innescando materiali facilmente combustibili."
   },
-  
   {
     "domanda": "Secondo il documento, a quale valore del flusso termico radiante a pavimento si ritiene generalmente che si raggiunga la fase di flash-over?",
     "opzioni": [
@@ -660,7 +659,6 @@
     "corretta": 2,
     "spiegazione": "La valutazione del rischio ambiente deve tener conto dell'ubicazione e della presenza di ricettori sensibili nelle aree esterne."
   },
-  
   {
     "domanda": "Quali sono i valori di temperatura e irraggiamento termico che determinano istantaneamente il fenomeno del flash-over?",
     "opzioni": [
@@ -881,7 +879,6 @@
     "corretta": 1,
     "spiegazione": "La curva può essere definita esclusivamente per incendi in ambienti confinati, dove è possibile misurare la temperatura media."
   },
-
   {
     "domanda": "Qual è l'obiettivo principale della 'reazione al fuoco' come misura di protezione passiva?",
     "opzioni": [
@@ -891,7 +888,7 @@
       "Fornire illuminazione di sicurezza lungo le vie di esodo"
     ],
     "corretta": 1,
-    "spiezazione": "La reazione al fuoco mira a limitare l'innesco e la propagazione nella fase iniziale (pre-flashover), riferendosi al grado di partecipazione del materiale alla combustione."
+    "spiegazione": "La reazione al fuoco mira a limitare l'innesco e la propagazione nella fase iniziale (pre-flashover), riferendosi al grado di partecipazione del materiale alla combustione."
   },
   {
     "domanda": "Nella classificazione europea di reazione al fuoco (da A1 a F), quale classe indica un materiale con grado di partecipazione al fuoco non determinato?",
@@ -1026,7 +1023,7 @@
     "spiegazione": "Il filtro è un compartimento in cui la probabilità di avvio e sviluppo dell'incendio è resa trascurabile grazie all'assenza di inneschi e ridotto carico d'incendio."
   },
   {
-    "domanda": "Quale caratteristica distingue un 'compartimento a prova di fumo'?",
+    "domanda": "Quale caratteristica distingue un 'compartimento a prova di fumo'",
     "opzioni": [
       "È costruito interamente in vetro",
       "Non ha bisogno di porte",
@@ -1377,7 +1374,6 @@
     "corretta": 0,
     "spiegazione": "Le vie d'esodo esterne devono essere completamente esterne alle opere da costruzione e opportunamente protette."
   },
-
   {
     "domanda": "Quale densità di affollamento deve essere considerata per gli ambiti adibiti ad attività scolastica e laboratori privi di posti a sedere?",
     "opzioni": [
@@ -1928,7 +1924,6 @@
     "corretta": 1,
     "spiegazione": "Uno dei primi obiettivi di sicurezza degli impianti è limitare la probabilità che essi stessi costituiscano causa di incendio."
   },
-
   {
     "domanda": "Qual è la definizione corretta di Gestione della Sicurezza Antincendio (GSA) secondo il D.M. 3/8/2015?",
     "opzioni": [
@@ -2259,7 +2254,6 @@
     "corretta": 1,
     "spiegazione": "La fine dell'emergenza viene segnalata quando il pericolo scompare e i locali sono tornati alla normalità."
   },
-
   {
     "domanda": "Qual è il limite principale per l'uso dei respiratori a filtro secondo il documento?",
     "opzioni": [
